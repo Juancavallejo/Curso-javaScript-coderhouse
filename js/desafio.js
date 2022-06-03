@@ -1,10 +1,14 @@
-/* let ingresarNumero = parseInt (prompt ("Ingrese Numero"));
-for (i = 1 ; i <= ingresarNumero ; i++) {
-    console.log ("Hola" +i);
-} */
 
-let ingreseDato = prompt ("Ingrese por favor la palabra correcta");
-while (ingreseDato != "coderhouse") {
-    alert ("El usuario ingreso "+ ingreseDato + " pero esta palabra es incorrecta")
-    ingreseDato = prompt ("Nueva oportunidad, ingresa una nueva palabra ");
-}
+
+let capital = parseInt(prompt ("Ingrese el capital a prestar"));
+let cuotas = parseInt(prompt("Ingrese el numero de cuotas"));
+let interesBase = parseFloat(prompt ("¿A que interes le presta el banco?"));
+
+const interesPorcentaje = interesBase/100;
+const interesesFijos = intereses (capital, interesPorcentaje);
+const cuotaMensual = pago (interesPorcentaje, capital, cuotas);
+let pagoAmortizacion = amortizacion (cuotaMensual, interesesFijos);
+
+alert ("Tu cuota mensual fija es de $" + cuotaMensual);
+alert ("El primer pago que realices será de $" + pagoAmortizacion + " por concepto de capital" );
+alert ("Los intereses que pagaras en tu primera cuota serán de $" + interesesFijos);

@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+main {
+    min-height: 83vh ;
+}
+
+.footer__socialMedia-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; 
+}
+.footer__socialMedia-container a {
+      font-size: 2rem;
+      width: 3rem;
+      height: 3rem;
+      color: white;
+      border-radius: 50%;
+      transition: all 0.5s ease-in; 
+}
+
+.footer__socialMedia-container a:hover {
+        transform: scale(1.2) translateY(-5px); 
+}
