@@ -1,42 +1,41 @@
 
-let capital = parseInt(prompt ("Ingrese el capital a prestar"));
-let cuotas = parseInt(prompt("Ingrese el numero de cuotas"));
-let interesBase = parseFloat(prompt ("¿A que interes le presta el banco?"));
+let capital = parseInt(prompt("Ingrese el capital a prestar"));
+let NroCuotas = parseInt(prompt("Ingrese el numero de cuotas"));
+let interesBase = parseFloat(prompt("¿A que interes le presta el banco?"));
+
 /* Array -- Almacenar los intereses, amortización y saldo final de cada cuota */
+
 const cuotasAlmacenadas = [];
 
-const interesPorcentaje = interesBase/100;
-const interesesFijos = intereses (capital, interesPorcentaje);
-const cuotaMensual =  pago (interesPorcentaje, capital, cuotas);
-let pagoAmortizacion = amortizacion (cuotaMensual, interesesFijos);
-let saldoFinal = valorFinal (capital,pagoAmortizacion);
+/* Selectores del HTML */
+/* let capital = document.querySelector (".montoCapital"); */
+const tableConceptos = document.querySelector (".tableConceptos")
+const listaCuotas = document.querySelector("#lista")
+const btnSubmit = document.querySelector(".botonEnviar")
 
-/* Información relativa a la primera cuota */
-alert ("Tu cuota mensual fija es de $" + cuotaMensual.toFixed(2));
-alert (`Los intereses que se pagaran en tu cuota numero 1 seran de $${interesesFijos.toFixed(2)} y $${pagoAmortizacion.toFixed(2)} por concepto de capital. 
-Y tendrás un saldo final de $${saldoFinal.toFixed(2)}`)
+/* Eventos */
+btnSubmit.addEventListener ("click", () => {
+    cargarConceptos ()
+    cargarPrimeraCuota ();
+    cargaCuotas();
+}) 
+
+const interesPorcentaje = interesBase / 100;
+const interesesFijos = intereses(capital, interesPorcentaje);
+const cuotaMensual = pago(interesPorcentaje, capital, NroCuotas);
+let pagoAmortizacion = amortizacion(cuotaMensual, interesesFijos);
+let saldoFinal = valorFinal(capital, pagoAmortizacion);
+
+const CuotaPrimera =[capital, cuotaMensual, pagoAmortizacion, saldoFinal]
 
 /* Información relativa a la segunda cuota y siguientes */
 
-for (let i= 1; i < cuotas; i++) {
+for (let i = 1; i < NroCuotas; i++) {
+    let numeroCuota = ("Nro " + (i+1))
     capital = saldoFinal;
-    let interesesMensuales = capital* interesPorcentaje;
+    let interesesMensuales = saldoFinal * interesPorcentaje;
     let amortizacionMensual = cuotaMensual - interesesMensuales;
     saldoFinal = capital - amortizacionMensual;
-    const cuota1 = new Cuota (interesesMensuales, amortizacionMensual, saldoFinal)
-    cuotasAlmacenadas.push (cuota1)
+    const cuotas = new Cuota(numeroCuota,capital, interesesMensuales, amortizacionMensual, saldoFinal)
+    cuotasAlmacenadas.push(cuotas)
 }
-
-/* Bucle for para conocer los intereses, amortización y saldo final de cada cuota 
-a partir de la segunda cuota y siguientes */
-
-for (const cuotas of cuotasAlmacenadas) {
-    cuotas.info ()
-}
-
-/* Nuevo array unicamente de saldos finales en cada cuota con el metodo map */
-
-const saldosFinales = cuotasAlmacenadas.map ((el) => el.saldoFinal)
-console.log (saldosFinales)
-
-

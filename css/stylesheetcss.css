@@ -5,8 +5,28 @@
     text-decoration: none;
 }
 
-main {
-    min-height: 83vh ;
+.simulador__mainContainer{
+    min-height: 70vh;
+    max-width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulador__mainContainer .simulador__formulary {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulador__mainContainer .simulador__table {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    text-align:justify;
 }
 
 .footer__socialMedia-container {
