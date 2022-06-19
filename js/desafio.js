@@ -10,6 +10,7 @@ const cuotasAlmacenadas = [];
 /* Selectores del HTML */
 /* let capital = document.querySelector (".montoCapital"); */
 const tableConceptos = document.querySelector (".tableConceptos")
+const filaResultados = document.querySelector (".filaResultados")
 const listaCuotas = document.querySelector("#lista")
 const btnSubmit = document.querySelector(".botonEnviar")
 
@@ -18,6 +19,7 @@ btnSubmit.addEventListener ("click", () => {
     cargarConceptos ()
     cargarPrimeraCuota ();
     cargaCuotas();
+    cargarResultados();
 }) 
 
 const interesPorcentaje = interesBase / 100;
@@ -39,3 +41,18 @@ for (let i = 1; i < NroCuotas; i++) {
     const cuotas = new Cuota(numeroCuota,capital, interesesMensuales, amortizacionMensual, saldoFinal)
     cuotasAlmacenadas.push(cuotas)
 }
+
+/* Información para hallar valores totales */
+/* Intereses pagados */
+
+const interesesTotalesString = cuotasAlmacenadas.map ((el) => el.interesesMensuales)/* .reduce ((a,b) => a + b, 0); */
+const interesesTotales = interesesTotalesString.map ((i) => Number(i));
+
+let sumaIntereses = interesesTotales.reduce ((anterior, actual) => {
+    return anterior + actual;
+});
+
+const totalIntereses = sumaIntereses + interesesFijos
+
+/* Dinero total pagado en el prestamo */
+const totalPagado = dineroTotal (cuotaMensual,  NroCuotas)

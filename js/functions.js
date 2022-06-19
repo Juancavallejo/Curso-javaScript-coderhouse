@@ -77,3 +77,24 @@ function cargaCuotas () {
 }
 
 
+/* Function conocer dinero total pagado en el prestamo */
+
+function dineroTotal (cuotaMensual,  NroCuotas){
+    return (cuotaMensual * NroCuotas)
+}
+
+/* Function para cargar resultados finales  */
+
+function cargarResultados () {
+    const filaResultadosFinales = `<div class="row border border-primary filaResultados">
+                                        <h4 class="col-6">Total intereses pagados </h4>
+                                        <p class="col-6 fs-4">$${totalIntereses}</p>
+                                        <h4 class="col-6">Total dinero pagado </h4>
+                                        <p class="col-6 fs-4">$${totalPagado.toFixed(2)}</p>
+                                        <div class="login__buttons d-flex justify-content-center m-2">
+                                            <button class="btn btn-primary btn-lg mx-2 mx-md-3" type="reset">Limpiar</button>
+                                            <a class="btn btn-primary fs-5" role="button" href="./pages/contact.html"> Guarda tus resultados</a>
+                                        </div>
+                                    </div>`
+        filaResultados.innerHTML = filaResultadosFinales;
+}

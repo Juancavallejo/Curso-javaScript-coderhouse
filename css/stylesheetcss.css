@@ -5,8 +5,10 @@
     text-decoration: none;
 }
 
+/* Pagina inicial simulador */
+
 .simulador__mainContainer{
-    min-height: 70vh;
+    min-height: 76vh;
     max-width: 70%;
     display: flex;
     justify-content: center;
@@ -29,6 +31,42 @@ p {
     text-align:justify;
 }
 
+/* Animaciones botones */
+
+.login__buttons [type=reset] {
+    transition: all 0.5s ease-in; 
+}
+
+.login__buttons [type=reset]:hover { 
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.login__buttons [type=submit] {
+    transition: all 0.5s ease-in; 
+}
+
+.login__buttons [type=submit]:hover { 
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+/* Contenedor de resultados finales */
+
+.simulador__lastContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulador__lastContainer .simulador__formulary {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Footer */
+
 .footer__socialMedia-container {
     display: flex;
     justify-content: space-evenly;
@@ -48,3 +86,34 @@ p {
 .footer__socialMedia-container a:hover {
         transform: scale(1.2) translateY(-5px); 
 }
+
+/* ------------Contact -------------- */
+
+.contactSimulador__mainContainer {
+    min-height: 78vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.contactSimulador__mainContainer .contact__formSimulador {
+    display: grid;
+    justify-content: center;
+    align-items: center; 
+}
+  
+@media screen and (min-width: 768px) {
+    .contactSimulador__mainContainer .contact__formSimulador .contact__buttons [type=reset] {
+      transition: all 0.5s ease-in; }
+
+    .contactSimulador__mainContainer .contact__formSimulador .contact__buttons [type=reset]:hover {
+        transform: scale(1.2);
+        cursor: pointer; }
+    
+    .contactSimulador__mainContainer .contact__formSimulador .contact__buttons [type=submit] {
+      transition: all 0.5s ease-in; }
+
+    .contactSimulador__mainContainer .contact__formSimulador .contact__buttons [type=submit]:hover {
+        transform: scale(1.2);
+        cursor: pointer; }
+}
+
