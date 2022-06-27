@@ -12,8 +12,12 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./css/stylesheetcss.css">
   <!-- Archivos Javascript -->
+  <script defer src="js/variables.js"></script>
+  <script defer src="js/operacionesIniciales.js"></script>
   <script defer src="js/functions.js"></script>
   <script defer src="js/index.js"></script>
+  <!-- SweetAler CDN -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
   <!-- Booststrap CDN stylesheet-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -57,12 +61,12 @@
           </h4>
           <div class="input-group mb-3">
             <span class="input-group-text">Capital</span>
-            <input type="text" class="form-control" id="montoCapital">
+            <input type="number" class="form-control montoCapital">
             <span class="input-group-text">.00</span>
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">Numero de cuotas</span>
-            <input type="text" class="form-control nroCuotas">
+            <input type="number" class="form-control nroCuotas">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text">Interes mensual</span>
@@ -70,7 +74,7 @@
             <span class="input-group-text">%</span>
           </div>
           <div class="login__buttons d-flex justify-content-center m-2">
-            <button class="btn btn-primary btn-lg mx-2 mx-md-3" type="reset">Limpiar</button>
+            <button class="btn btn-primary btn-lg mx-2 mx-md-3 botonReset" type="reset">Limpiar</button>
             <button class="btn btn-primary btn-lg mx-2 mx-md-3 botonEnviar" type="submit">Ver simulación</button>
           </div>
         </form>
@@ -109,5 +113,5 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-</body>
+  </body>
 </html>

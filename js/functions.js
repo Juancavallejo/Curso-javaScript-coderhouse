@@ -1,3 +1,4 @@
+
 /* Functions para calcular valores iniciales */
 function pago(interesPorcentaje, capital, NroCuotas) {
     return (
@@ -5,8 +6,6 @@ function pago(interesPorcentaje, capital, NroCuotas) {
       (1 - Math.pow(1 + interesPorcentaje, -NroCuotas))
     );
   }
-  
-  
   
   function amortizacion(cuotaMensual, interesesFijos) {
     return cuotaMensual - interesesFijos;
@@ -59,21 +58,20 @@ function pago(interesPorcentaje, capital, NroCuotas) {
   
   /* Function para ir guardando la información relativa a cada cuota y crear un array de objetos */
   
-  function Cuota(
-    numeroCuota,
-    capital,
-    interesesMensuales,
-    amortizacionMensual,
-    saldoFinal
-  ) {
-    this.numeroCuota = numeroCuota;
-    this.capital = capital;
-    this.interesesMensuales = interesesMensuales.toFixed(2);
-    this.amortizacionMensual = amortizacionMensual.toFixed(2);
-    this.saldoFinal = saldoFinal.toFixed(2);
+  class Cuota {
+    constructor (numeroCuota,capital, interesesMensuales,amortizacionMensual, saldoFinal)
+    {
+      this.numeroCuota = numeroCuota;
+      this.capital = capital;
+      this.interesesMensuales = interesesMensuales.toFixed(2);
+      this.amortizacionMensual = amortizacionMensual.toFixed(2);
+      this.saldoFinal = saldoFinal.toFixed(2);
+    }
   }
-  
+
   /* Function para cargar cuotas adicionales */
+
+  
   
   function cargaCuotas(cuotaMensual) {
     for (cuotas of cuotasAlmacenadas) {
@@ -105,10 +103,16 @@ function pago(interesPorcentaje, capital, NroCuotas) {
                                            <h4 class="col-6">Total dinero pagado </h4>
                                            <p class="col-6 fs-4">$${totalPagado.toFixed(2)}</p>
                                            <div class="login__buttons d-flex justify-content-center m-2">
-                                               <button class="btn btn-primary btn-lg mx-2 mx-md-3" type="reset">Limpiar</button>
-                                               <a class="btn btn-primary fs-5" role="button" id="botonReset" href="./pages/contact.html"> Guarda tus resultados</a>
+                                               <button class="btn btn-primary btn-lg mx-2 mx-md-3 btnlimpiar" type="reset">Limpiar</button>
+                                               <a class="btn btn-primary fs-5" role="button" href="./pages/contact.html"> Guarda tus resultados</a>
                                            </div>
                                        </div>`;
     filaResultados.innerHTML = filaResultadosFinales;
+  
+  /* Selectores y evento para listado de resultados finales */
+    const btnlimpiar = document.querySelector (".btnlimpiar");
+    btnlimpiar.addEventListener ("click", ()=> location.reload() )
   }
+
+  
   
