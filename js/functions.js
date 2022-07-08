@@ -1,3 +1,10 @@
+const mainPreloader = ()=> {
+  return   `  <div class="d-flex justify-content-center m-4">
+                  <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                  </div>
+              </div>`
+}
 
 /* Functions para calcular valores iniciales */
 function pago(interesPorcentaje, capital, NroCuotas) {

@@ -7,3 +7,5 @@ const inputEmail = document.querySelector ("#inputEmail");
 
 const btnEnviar = document.querySelector ("#bttEnviar")
 const btnReset = document.querySelector ("#bttReset")
+
+const spinner = document.querySelector ("#spinner")

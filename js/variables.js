@@ -18,3 +18,5 @@ const btnlimpiar = document.querySelector (".btnlimpiar");
 const tableConceptos = document.querySelector(".tableConceptos");
 const filaResultados = document.querySelector(".filaResultados");
 const listaCuotas = document.querySelector("#lista");
+
+const spinner = document.querySelector ("#mainSpinner")

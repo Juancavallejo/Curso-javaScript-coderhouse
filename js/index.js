@@ -10,14 +10,19 @@ const faltanDatos = () => {
 }
 
 const calculoSimulacion = () => {
-capital = parseInt(inputCapital.value)
-NroCuotas = parseInt(inputNroCuotas.value)
-interesBase = parseFloat(inputInteresBase.value)
-operaciones ()
-successPersonalizado ()
+  mainSpinner.innerHTML = mainPreloader ();
+    setTimeout(() => {
+      capital = parseInt(inputCapital.value);
+      NroCuotas = parseInt(inputNroCuotas.value);
+      interesBase = parseFloat(inputInteresBase.value);
+      operaciones ();
+      mainSpinner.innerHTML = "";
+      successPersonalizado ();
+  }, 1000);
 }
 
 const simulacionCuotas = () => {
+  
   faltanDatos () == true ?
   errorPersonalizado () :
   calculoSimulacion ();

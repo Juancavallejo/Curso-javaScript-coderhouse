@@ -13,6 +13,7 @@ const envioInformacion = () => {
     faltanDatosFormulario () == true ?
     errorPersonalizado () :
     almacenarDatosUsuario ();
+    envioAlBackend (); 
 }
 
 const faltanDatosFormulario = () => {
@@ -26,7 +27,6 @@ const almacenarDatosUsuario = () => {
     }
     let str =JSON.stringify (datosUsuario);
     localStorage.setItem ("datosUsuario", str);
-    successPersonalizado ()
 }
 
 /* Function para permitir recuperar datos de usuarios anteriores por localStorage */
@@ -41,6 +41,44 @@ const recuperarDatosUsuario = () => {
 
 recuperarDatosUsuario ()
 
+/* Carga al backend */
+
+const envioAlBackend = () => {
+    envioDatosFetch ()
+    spinner.innerHTML = preloader ();
+        setTimeout(() => {
+            spinner.innerHTML = ""
+            successPersonalizado ()
+        }, 1500)
+}
+
+const preloader = ()=> {
+    return   `  <div class="d-flex justify-content-center m-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>`
+}
+
+/* Fetch */
+
+const envioDatosFetch = (URL) => {
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+          title: 'Envio simulación',
+          body: 'nombre',
+          userId: 1,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+
+.then((response) => response.json())
+.then((json) => console.log(json));
+}
+
 /* Sweet alert  */
 /* ---------------------- */
 
@@ -54,7 +92,7 @@ const errorPersonalizado = ()=> {
 
 const successPersonalizado = ()=> {
     Swal.fire({
-        title: 'Tu cotización se ha enviado a tu correo electronico!',
+        title: 'Tu simulación se ha enviado a tu correo electronico!',
         icon: 'success',
         showConfirmButton: false,
         timer: 2000
