@@ -9,3 +9,4 @@ const btnEnviar = document.querySelector ("#bttEnviar")
 const btnReset = document.querySelector ("#bttReset")
 
 const spinner = document.querySelector ("#spinner")
+const BotonErrorEnvioDatos = document.querySelector ("#BotonErrorEnvioDatos")

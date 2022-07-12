@@ -16,6 +16,7 @@
   <script defer src="js/operacionesIniciales.js"></script>
   <script defer src="js/functions.js"></script>
   <script defer src="js/index.js"></script>
+  <script defer src="js/librerias.js"></script>
   <!-- SweetAler CDN -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>   
   <!-- Booststrap CDN stylesheet-->
@@ -24,9 +25,9 @@
 </head>
 <body>
   <!-- Start header -->
-  <nav class="navbar bg-light mb-5">
+  <nav class="navbar navbar-primary bg-primary mb-5">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand text-light" href="#">
         Simulador financiero
       </a>
     </div>
@@ -50,12 +51,9 @@
             unos
             intereses mensuales promedio para diferentes tipos de prestamos bancarios.
           </p>
-          <ul class="fs-5"> Intereses mensuales promedio en Colombia:
-            <li class="fs-5">Tarjetas de crédito con una tasa de intereses mensual promedio de 1.82%.</li>
-            <li class="fs-5">Crédito de vehiculo con una tasa de intereses mensual promedio de 1.2%.</li>
-            <li class="fs-5">Crédito de libre inversión con una tasa de intereses mensual promedio de 1.6%.</li>
-            <li class="fs-5">Credito hipotecario con una tasa de intereses mensual promedio de 0.81%.</li>
-          </ul>
+          <p class="fs-5"> Intereses mensuales promedio en Colombia:</p>
+          <div id="tasasInteres">
+          </div>
           <h4 class="animate__animated animate__backInDown m-4">Ingresa el capital, el
             numero de cuotas y el interes que te va a cobrar el banco! Y podrás simular los montos y valores a pagar:
           </h4>
@@ -83,6 +81,8 @@
         </form>
       </div>
     </section>
+    <!-- Acá inicia la tabla en HTML donde se ven los conceptos, numero de cuotas, 
+      valores de capital, interes, amoritzación, etc -->
     <section class="container-fluid my-5">
       <table class="table table-striped table-hover">
         <thead class="tableConceptos">
@@ -93,6 +93,8 @@
         </tbody>
       </table>
     </section>
+    <!-- Acá se encuentra un div donde se ven lo resultados finales, es decir el monto total pagado en dinero 
+    e intereses -->
     <section class="container-fluid simulador__lastContainer my-5">
       <div class="container-fluid simulador__formulary ">
         <div class="row filaResultados">

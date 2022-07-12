@@ -1,42 +1,46 @@
-const mainPreloader = ()=> {
-  return   `  <div class="d-flex justify-content-center m-4">
-                  <div class="spinner-border text-primary" role="status">
-                      <span class="visually-hidden">Loading...</span>
-                  </div>
-              </div>`
+/* Obtener valor de tasas de interes actuales por Fetch */
+const valorTasas = (URL) => {
+  fetch(URL)
+  .then ((response) => response.json())
+  .then ((data) => {
+      tasasDeInteresJSON = data 
+      tasasDeInteresJSON.forEach(tasa => {
+        tasasAMostrar += cargarTasasInteres (tasa)
+        });
+      tasasInteres.innerHTML = tasasAMostrar
+  })
+  .catch ((error) => {
+    tasasInteres.innerHTML = errorTasas ()
+  })
+}
+
+const cargarTasasInteres = (tasa)=> {
+  const {nombre, valor} = tasa
+  let HTMLTasa = ""
+  HTMLTasa += `<li class="fs-5">${nombre} con una tasa de intereses mensual promedio de ${valor}</li>`
+  return HTMLTasa;
+}
+
+const errorTasas = () => {
+  let HTMLTasaError = `<p class="fs-5 text-warning"> Lo sentimos, actualmente nos encontramos actualizando nuestras tasas de interes,
+                        si quieres continuar con la simulación puedes revisar en internet tasas de interes recientes.`
+  return HTMLTasaError;
 }
 
 /* Functions para calcular valores iniciales */
-function pago(interesPorcentaje, capital, NroCuotas) {
-    return (
-      (interesPorcentaje * capital) /
-      (1 - Math.pow(1 + interesPorcentaje, -NroCuotas))
-    );
-  }
-  
-  function amortizacion(cuotaMensual, interesesFijos) {
-    return cuotaMensual - interesesFijos;
-  }
-  
-  
-  
-  function intereses(capital, interesPorcentaje) {
-    return capital * interesPorcentaje;
-  }
-  
-  
-  
-  function valorFinal(capital, pagoAmortizacion) {
-    return capital - pagoAmortizacion;
-  }
+const pago = (interesPorcentaje, capital, NroCuotas) => 
+    (interesPorcentaje * capital) /
+    (1 - Math.pow(1 + interesPorcentaje, -NroCuotas));
+ 
+const amortizacion = (cuotaMensual, interesesFijos) => cuotaMensual - interesesFijos;
 
-  document.addEventListener("submit", (e)=> {
-    e.preventDefault()
-})
+const intereses = (capital, interesPorcentaje) => capital * interesPorcentaje;
+  
+const valorFinal = (capital, pagoAmortizacion) => capital - pagoAmortizacion;
   
   /* Function cargar conceptos tabla de simulación */
   
-  function cargarConceptos() {
+  const cargarConceptos = () => {
     const filaConceptos = `<tr>               
                            <th scope="col">Numero de cuotas</th>
                            <th scope="col">Saldo inicial</th>
@@ -50,8 +54,7 @@ function pago(interesPorcentaje, capital, NroCuotas) {
   
   /* Function para cargar primera cuota de la simulación asociada al array cuotaPrimera */
 
-  function cargarPrimeraCuota(cuotaMensual, interesesFijos,pagoAmortizacion) {
-      
+  const cargarPrimeraCuota = (cuotaMensual, interesesFijos,pagoAmortizacion) => {
     const filaUno = `<tr>               
                        <td>Nro 1</td>
                        <td>$${cuotaPrimera[0].toFixed(2)}</td>
@@ -63,8 +66,7 @@ function pago(interesPorcentaje, capital, NroCuotas) {
     listaCuotas.innerHTML = filaUno;
   }
   
-  /* Function para ir guardando la información relativa a cada cuota y crear un array de objetos */
-  
+  /* Constructor para ir guardando la información relativa a cada cuota y crear un array de objetos */
   class Cuota {
     constructor (numeroCuota,capital, interesesMensuales,amortizacionMensual, saldoFinal)
     {
@@ -78,8 +80,6 @@ function pago(interesPorcentaje, capital, NroCuotas) {
 
   /* Function para cargar cuotas adicionales */
 
-  
-  
   function cargaCuotas(cuotaMensual) {
     for (cuotas of cuotasAlmacenadas) {
       const fila = `<tr>
@@ -94,16 +94,13 @@ function pago(interesPorcentaje, capital, NroCuotas) {
     }
   }
   
-  
   /* Function conocer dinero total pagado en el prestamo */
   
-  function dineroTotal(cuotaMensual, NroCuotas) {
-    return cuotaMensual * NroCuotas;
-  }
+  const dineroTotal = (cuotaMensual, NroCuotas) => cuotaMensual * NroCuotas;
   
   /* Function para cargar resultados finales  */
   
-  function cargarResultados(totalIntereses,totalPagado) {
+  const cargarResultados = (totalIntereses,totalPagado) => {
     const filaResultadosFinales = `<div class="row border border-primary filaResultados">
                                            <h4 class="col-6">Total intereses pagados </h4>
                                            <p class="col-6 fs-4">$${totalIntereses}</p>

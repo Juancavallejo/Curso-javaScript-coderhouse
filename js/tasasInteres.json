@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "nombre": "Tarjetas de crédito",
+        "valor": "1.82%" 
+    },
+    {
+        "id": 2,
+        "nombre": "Crédito de vehiculo",
+        "valor": "1.2%" 
+    },
+    {
+        "id": 3,
+        "nombre": "Crédito de libre inversión",
+        "valor": "1.6%" 
+    },
+    {
+        "id": 4,
+        "nombre": "Crédito hipotecario",
+        "valor": "0.81%" 
+    }
+]

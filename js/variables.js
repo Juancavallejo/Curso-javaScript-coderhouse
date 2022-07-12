@@ -1,10 +1,14 @@
+const URL =`js/tasasInteres.json`
 
 /* Array -- Almacenar los intereses, amortización y saldo final de cada cuota */
-const cuotaPrimera = [];
-const valoresIniciales = [];
-const cuotasAlmacenadas = [];
+let tasasDeInteresJSON = []
+let tasasAMostrar = ""
+const cuotaPrimera = []; /* Array cuota primera */
+const valoresIniciales = []; 
+const cuotasAlmacenadas = []; /* Array para cuotas desde la 2 y siguiente */
 
 /* Selectores del HTML - INPUTS */
+const tasasInteres = document.querySelector ("#tasasInteres")
 let inputCapital = document.querySelector(".montoCapital");
 let inputNroCuotas = document.querySelector(".nroCuotas");
 let inputInteresBase = document.querySelector(".interesMensual")
@@ -18,5 +22,7 @@ const btnlimpiar = document.querySelector (".btnlimpiar");
 const tableConceptos = document.querySelector(".tableConceptos");
 const filaResultados = document.querySelector(".filaResultados");
 const listaCuotas = document.querySelector("#lista");
+
+/* Preloader */
 
 const spinner = document.querySelector ("#mainSpinner")
